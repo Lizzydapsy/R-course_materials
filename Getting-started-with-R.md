@@ -181,23 +181,29 @@ scripts folder in your files pane.
 R is used interactively - you type an instruction to “do something” and
 the instruction will be interpreted when you hit the Enter key.
 
-Let’s briefly see use shortcut keys:
+------------------------------------------------------------------------
 
-ctrl/cmd + enter: Run R code line/block in R console
+Let’s briefly see some useful shortcut keys:
 
-ctrl+shift+C : Comment out line
+------------------------------------------------------------------------
 
-ctrl+shift+R - Insert section break (useful with outline enabled)
+**ctrl/cmd + enter**: Runs R code line/block in R console
 
-alt+M+-
+**ctrl+shift+C**: Comments out line
 
-alt+-
+**ctrl+shift+R**: Inserts section break (useful with outline enabled)
 
-alt+- Inserts the &lt;- (Used to assign stuffs to variables/objects)
+**alt+M+-**
 
-ctrl+shift+M: Inserts the pipe operator %&gt;% (very useful shortcut)
+**alt+-**
 
-ctrl+D: Deletes entire line
+**alt+-**: Inserts the &lt;- (Used to assign stuffs to
+variables/objects)
+
+**ctrl+shift+M**: Inserts the pipe operator %&gt;% (very useful
+shortcut)
+
+**ctrl+D**: Deletes entire line
 
 <br/> Let’s try simple arithmetic with R.
 
@@ -207,14 +213,37 @@ Type 1 + 3 at the scripting pane and hit Ctrl+Enter keys:
 
     ## [1] 14
 
-The answer is shown at the console with a \[1\] in front of it. The 1
-inside the square brackets signifies how many values were in the answer
-(in this case only one).
+The answer is shown at the console with a \[1\] in front of it
+signifying how many values were in the answer (in this case only one).
 
 <br/>
 
-**Thumbs up! for getting it done, we are now ready for the data
-importing and analysis**
+Let’s run some more codes
+
+    print("Hello World")
+
+    ## [1] "Hello World"
+
+    2 + (2 * 5)
+
+    ## [1] 12
+
+    5 + (2 + 2) * 3
+
+    ## [1] 17
+
+    pi
+
+    ## [1] 3.141593
+
+    2*pi
+
+    ## [1] 6.283185
+
+<br/>
+
+**Thumbs up! for getting this section done, we are now ready for the
+data importing and analysis**
 
 **Return** to the main course page:
 <https://github.com/Lizzydapsy/R-for-Data-Analysis>
