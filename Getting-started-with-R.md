@@ -1,4 +1,3 @@
-
 *R for Statistics and Data Visualization - An Introduction for Life
 Scientists 1*
 
@@ -31,8 +30,8 @@ Choose the right one for your system
 
 Install R by downloading and running the .exe file from CRAN. Note that
 if you have separate user and admin accounts, you should run the
-installers as administrator (right-click on .exe file and select "Run as
-administrator" instead of double-clicking). Otherwise problems may occur
+installers as administrator (right-click on .exe file and select “Run as
+administrator” instead of double-clicking). Otherwise problems may occur
 later, for example when installing R packages.
 
 **Mac**
@@ -42,7 +41,7 @@ Install R by downloading and running the .pkg file from CRAN.
 **Linux**
 
 Download the binary files for your distribution from CRAN Or use your
-package manager (e.g. for Debian/Ubuntu run sudo apt-get install r-base
+package manager (e.g. for Debian/Ubuntu run sudo apt-get install r-base
 and for Fedora run sudo yum install R).
 
 <br/>
@@ -72,9 +71,9 @@ We will be installing some extra R packages required for the training as
 we proceed. However, there are R functions that can check whether a
 package is currently installed. For example, the find.package function:
 
-```{r}
-find.package("MASS")
-```
+    find.package("MASS")
+
+    ## [1] "C:/Program Files/R/R-4.2.2/library/MASS"
 
 The Comprehensive R Archive Network (CRAN) repository stores thousands
 of stable R packages designed for a variety of data-related tasks. Most
@@ -83,9 +82,7 @@ often, you will use this repository to install various R packages.
 To install an R package from CRAN, we can use the install.packages()
 function:
 
-```{r}
-install.packages('readr')
-```
+    install.packages('readr')
 
 <br/>
 
@@ -93,9 +90,7 @@ We can use the same function to install several R packages at once. For
 this, we need to apply first the c() function to create a character
 vector containing all the desired packages for example:
 
-```{r}
-install.packages(c('ggplot2', 'dplyr'))
-```
+    install.packages(c('ggplot2', 'dplyr'))
 
 Above, we have installed two R packages: ggplot2 (for data
 visualization) and dplyr (for data manipulation).
@@ -136,11 +131,20 @@ computer), we may have to load each package for every new R session. For
 this purpose, we use the library() function and pass in the package
 name, as follows:
 
-```{r}
-library(dplyr)
-```
+    library(dplyr)
 
-**Note that**, in this case, we don't need to include the package name
+    ## 
+    ## Attaching package: 'dplyr'
+
+    ## The following objects are masked from 'package:stats':
+    ## 
+    ##     filter, lag
+
+    ## The following objects are masked from 'package:base':
+    ## 
+    ##     intersect, setdiff, setequal, union
+
+**Note that**, in this case, we don’t need to include the package name
 in quotation marks and we cannot load more than one package at a time.
 
 <br/>
@@ -150,7 +154,7 @@ in quotation marks and we cannot load more than one package at a time.
 Rstudio project is an R analysis structure that makes it easy and
 straightforward to divide your projects into multiple contexts, each
 with their own working directory, environment, history, and source
-documents... creating a very clean working environment.
+documents… creating a very clean working environment.
 
 Using RStudio projects eliminates so much of the early-stage hassles and
 confusions around reading in and exporting data. Setting up a working
@@ -166,16 +170,16 @@ Create your project directory/folder
 
 Navigate to your file explorer window
 
-File explorer window -\> Document folder or Google drive folder -\> Make
-a new folder called "R - training" (Parent directory) -\> Make two
-offspring folders: Data and Scripts
+File explorer window -&gt; Document folder or Google drive folder -&gt;
+Make a new folder called “R - training” (Parent directory) -&gt; Make
+two offspring folders: Data and Scripts
 
 Now, Open up RStudio and create an RStudio project using the menu File
--\> New Project -\> Existing Directory and browse to the directory that
-you named "R- training" -\> Create Project
+-&gt; New Project -&gt; Existing Directory and browse to the directory
+that you named “R- training” -&gt; Create Project
 
 Rstudio will refresh so that the working directory corresponds to the
-course data folder, "R-training".
+course data folder, “R-training”.
 
 Quit your RStudio, navigate to your R-training folder double click your
 project to open up RStudio which now contains your data folder and
@@ -185,10 +189,10 @@ scripts folder in your files pane.
 
 ### 6. Working at the RStudio script pane
 
-R is used interactively - you type an instruction to "do something" and
+R is used interactively - you type an instruction to “do something” and
 the instruction will be interpreted when you hit the Enter key.
 
-Let's briefly see use shortcut keys:
+Let’s briefly see use shortcut keys:
 
 ctrl/cmd + enter: Run R code line/block in R console
 
@@ -200,25 +204,21 @@ alt+M+-
 
 alt+-
 
-alt+- Inserts the \<- (Used to assign stuffs to variables/objects)
+alt+- Inserts the &lt;- (Used to assign stuffs to variables/objects)
 
-ctrl+shift+M: Inserts the pipe operator %\>% (very useful shortcut)
+ctrl+shift+M: Inserts the pipe operator %&gt;% (very useful shortcut)
 
 ctrl+D: Deletes entire line
 
-<br/> Let's try simple arithmetic with R.
+<br/> Let’s try simple arithmetic with R.
 
 Type 1 + 3 at the scripting pane and hit Ctrl+Enter keys:
 
+    1+13
 
+    ## [1] 14
 
-1+13
-
-
-
-
-
-The answer is shown at the console with a [1] in front of it. The 1
+The answer is shown at the console with a \[1\] in front of it. The 1
 inside the square brackets signifies how many values were in the answer
 (in this case only one).
 
