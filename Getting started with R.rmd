@@ -1,7 +1,7 @@
 ---
 output:
-  md_document: default
   html_document: default
+  md_document: default
 ---
 
 *R for Statistics and Data Visualization - An Introduction for Life
@@ -141,7 +141,7 @@ computer), we may have to load each package for every new R session. For
 this purpose, we use the library() function and pass in the package
 name, as follows:
 
-```{r}
+```
 library(dplyr)
 ```
 

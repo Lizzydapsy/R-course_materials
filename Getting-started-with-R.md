@@ -133,17 +133,6 @@ name, as follows:
 
     library(dplyr)
 
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
 **Note that**, in this case, we don’t need to include the package name
 in quotation marks and we cannot load more than one package at a time.
 
