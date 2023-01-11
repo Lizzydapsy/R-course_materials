@@ -4,7 +4,6 @@ output:
   html_document: default
 ---
 
-
 *R for Statistics and Data Visualization - An Introduction for Life
 Scientists 1*
 
