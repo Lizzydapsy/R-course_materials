@@ -5,6 +5,7 @@ output:
     toc: yes
     theme: readable
     highlight: pygments
+    fig_caption: yes
 ---
 
 
@@ -13,12 +14,6 @@ output:
 # Data handling and Basic plotting
 
 ###### Elizabeth Oladapo
-
-
-
-
-
-
 
 
 <br/>
