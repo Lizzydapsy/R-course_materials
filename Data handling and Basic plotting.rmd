@@ -1,13 +1,14 @@
 ---
-output:
-  md_document: default
-  html_document: default
+output: 
+  html_document:
+    keep_md: true
+    self_contained: true
 ---
 
 
 *R for Statistics and Data Visualization - An Introduction for Life Scientists 1*
 
-# Data Management and Basic graphing
+# Data handling and Basic plotting
 
 ###### Elizabeth Oladapo
 
@@ -85,12 +86,60 @@ Look at the data using the function glimpse(), to be sure you have loaded the co
 ```{r}
 # Looking at the data
 
-glimpse(Elephants_data) # or just Elephants_data
+glimpse(Elephants_data) # or Elephants_data or str(Elephants_data)
+
+```
+
+```
+Question
+There are three variables in the Elephants_data, which of them are the explanatory variables and which is a response variable?
 
 ```
 
 <br/>
 
+### 3. Visualizing the data
+
+Visualize the data by generating your first plot in R using the function ggplot() from the package, ggplot2.
+
+```{r}
+
+## Visualize the data1
+
+ggplot(Elephants_data, aes(x = Age, y=Height))+
+  geom_point()    # a continuous response variable with a continuous explanatory variable producing scatterplot
+
+```
+```{r}
+
+## Visualize the data2
+
+ggplot(Elephants_data, aes(x = Sex, y=Height))+
+  geom_col()    # a continuous response variable with a binary explanatory variable producing barcharts
+
+```
+<br/>
+
+### 4. Visualizing the data
+
+
+
+<br/>
+
+__Exercise 1__
+
+The output you should get, and the graph
+that should be produced, are provided below.
+
+You should:
+• select the fruit and grazing columns
+• filter fruit that is > 90 OR < 30
+• assign this subset of the data to the object fg90_30
+• look at the data
+• produce a scatterplot of Fruit (y) versus Grazing (x), proving that there are only values >90 or <30
+
+
+<br/>
 ### 6. Save your first script!
 
 
