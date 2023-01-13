@@ -1,8 +1,10 @@
 ---
 output: 
-  html_document:
-    keep_md: true
-    self_contained: true
+  html_document: 
+    keep_md: yes
+    toc: yes
+    theme: readable
+    highlight: pygments
 ---
 
 
@@ -11,6 +13,13 @@ output:
 # Data handling and Basic plotting
 
 ###### Elizabeth Oladapo
+
+
+
+
+
+
+
 
 <br/>
 
