@@ -1,7 +1,11 @@
 ---
-output:
-  rmarkdown::github_document: default
-  toc: default
+output: 
+  html_document: 
+    keep_md: yes
+    toc: yes
+    theme: readable
+    highlight: pygments
+    fig_caption: yes
 ---
 
 
