@@ -5,7 +5,7 @@ Scientists 1*
 
 ###### Elizabeth Oladapo
 
-The aim of this practical is to get you started with installing R and
+The aim of this section is to get you started with installing R and
 RStudio on your computer, customize RStudio and installing
 R-libraries/packages
 
@@ -127,7 +127,7 @@ file, but we will not cover this here.
 Once the necessary packages have been installed, the next step is to
 load each package to start working with them. While we need to install
 each package only once (i.e., the first time using R on a particular
-computer), we may have to load each package for every new R session. For
+computer), we may have to load each package for every new R version. For
 this purpose, we use the library() function and pass in the package
 name, as follows:
 
@@ -187,15 +187,12 @@ Let’s briefly see some useful shortcut keys:
 
 ------------------------------------------------------------------------
 
-**ctrl/cmd + enter**: Runs R code line/block in R console
+**ctrl/cmd + enter**: Submit a R code line or block of code from script
+to the R console
 
 **ctrl+shift+C**: Comments out line
 
 **ctrl+shift+R**: Inserts section break (useful with outline enabled)
-
-**alt+M+-**
-
-**alt+-**
 
 **alt+-**: Inserts the &lt;- (Used to assign stuffs to
 variables/objects)
@@ -205,7 +202,9 @@ shortcut)
 
 **ctrl+D**: Deletes entire line
 
-<br/> Let’s try simple arithmetic with R.
+<br/>
+
+Let’s try simple arithmetic with R.
 
 Type 1 + 3 at the scripting pane and hit Ctrl+Enter keys:
 
@@ -242,8 +241,29 @@ Let’s run some more codes
 
 <br/>
 
+Assign some of these elements to variables/objects
+
+    a <- 2 + (2 * 5)
+
+    b <- 5 + (2 + 2) * 3
+
+<br/>
+
+Print the variables
+
+    print(a)
+
+    ## [1] 12
+
+    print(b)
+
+    ## [1] 17
+
+<br/>
+
 **Thumbs up! for getting this section done, we are now ready for the
-data importing and analysis**
+next section**
 
 **Return** to the main course page:
-<https://github.com/Lizzydapsy/R-for-Data-Analysis>
+<https://github.com/Lizzydapsy/R-for-Data-Analysis> and click on “Data
+Management and Basic graphing”
