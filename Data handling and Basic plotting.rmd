@@ -1,18 +1,19 @@
 ---
+title: Data handling and Basic plotting
+author: Elizabeth Oladapo
 output: 
   html_document: 
-    keep_md: yes
-    toc: yes
+    keep_md: true
+    toc: true
     theme: readable
     highlight: pygments
+    toc_float: true
+    toc_depth: 6
+    mathjax: null
+    css: doc.css
 ---
 
-
-*R for Statistics and Data Visualization - An Introduction for Life Scientists 1*
-
-# Data handling and Basic plotting
-
-###### Elizabeth Oladapo
+*(R for Statistics and Data Visualization - An Introduction for Life Scientists 1)*
 
 
 <br/>
