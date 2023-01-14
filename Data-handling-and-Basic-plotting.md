@@ -6,7 +6,7 @@ output:
     theme: readable
     highlight: pygments
     fig_caption: yes
-    self_contained: false
+    self_contained: yes
 ---
 
 
