@@ -1,13 +1,17 @@
-*R for Statistics and Data Visualization - An Introduction for Life
-Scientists 1*
+Setting up R and RStudio / Getting started with R
+================
+Elizabeth Oladapo
 
-# Setting up R and RStudio / Getting started with R
+*(R for Statistics and Data Visualization - An Introduction for Life
+Scientists 1)*
 
-###### Elizabeth Oladapo
+<br/>
 
 The aim of this section is to get you started with installing R and
 RStudio on your computer, customize RStudio and installing
 R-libraries/packages
+
+<br/>
 
 ### 1. Install R and RStudio
 
@@ -71,7 +75,9 @@ We will be installing some extra R packages required for the training as
 we proceed. However, there are R functions that can check whether a
 package is currently installed. For example, the find.package function:
 
-    find.package("MASS")
+``` r
+find.package("MASS")
+```
 
     ## [1] "C:/Program Files/R/R-4.2.2/library/MASS"
 
@@ -159,13 +165,13 @@ Create your project directory/folder
 
 Navigate to your file explorer window
 
-File explorer window -&gt; Document folder or Google drive folder -&gt;
-Make a new folder called “R - training” (Parent directory) -&gt; Make
-two offspring folders: Data and Scripts
+File explorer window -\> Document folder or Google drive folder -\> Make
+a new folder called “R - training” (Parent directory) -\> Make two
+offspring folders: Data and Scripts
 
 Now, Open up RStudio and create an RStudio project using the menu File
--&gt; New Project -&gt; Existing Directory and browse to the directory
-that you named “R- training” -&gt; Create Project
+-\> New Project -\> Existing Directory and browse to the directory that
+you named “R- training” -\> Create Project
 
 Rstudio will refresh so that the working directory corresponds to the
 course data folder, “R-training”.
@@ -194,11 +200,9 @@ to the R console
 
 **ctrl+shift+R**: Inserts section break (useful with outline enabled)
 
-**alt+-**: Inserts the &lt;- (Used to assign stuffs to
-variables/objects)
+**alt+-**: Inserts the \<- (Used to assign stuffs to variables/objects)
 
-**ctrl+shift+M**: Inserts the pipe operator %&gt;% (very useful
-shortcut)
+**ctrl+shift+M**: Inserts the pipe operator %\>% (very useful shortcut)
 
 **ctrl+D**: Deletes entire line
 
@@ -208,7 +212,9 @@ Let’s try simple arithmetic with R.
 
 Type 1 + 3 at the scripting pane and hit Ctrl+Enter keys:
 
-    1+13
+``` r
+1+13
+```
 
     ## [1] 14
 
@@ -219,23 +225,33 @@ signifying how many values were in the answer (in this case only one).
 
 Let’s run some more codes
 
-    print("Hello World")
+``` r
+print("Hello World")
+```
 
     ## [1] "Hello World"
 
-    2 + (2 * 5)
+``` r
+2 + (2 * 5)
+```
 
     ## [1] 12
 
-    5 + (2 + 2) * 3
+``` r
+5 + (2 + 2) * 3
+```
 
     ## [1] 17
 
-    pi
+``` r
+pi
+```
 
     ## [1] 3.141593
 
-    2*pi
+``` r
+2*pi
+```
 
     ## [1] 6.283185
 
@@ -243,19 +259,25 @@ Let’s run some more codes
 
 Assign some of these elements to variables/objects
 
-    a <- 2 + (2 * 5)
+``` r
+a <- 2 + (2 * 5)
 
-    b <- 5 + (2 + 2) * 3
+b <- 5 + (2 + 2) * 3
+```
 
 <br/>
 
 Print the variables
 
-    print(a)
+``` r
+print(a)
+```
 
     ## [1] 12
 
-    print(b)
+``` r
+print(b)
+```
 
     ## [1] 17
 

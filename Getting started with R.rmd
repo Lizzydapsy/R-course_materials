@@ -1,18 +1,19 @@
 ---
+title: Setting up R and RStudio / Getting started with R
+author: Elizabeth Oladapo
 output:
-  md_document: default
-  html_document: default
+  github_document
 ---
 
-*R for Statistics and Data Visualization - An Introduction for Life Scientists 1*
+*(R for Statistics and Data Visualization - An Introduction for Life Scientists 1)*
 
-# Setting up R and RStudio / Getting started with R
-
-###### Elizabeth Oladapo
+<br/>
 
 The aim of this section is to get you started with installing R and
 RStudio on your computer, customize RStudio and installing
 R-libraries/packages
+
+<br/>
 
 ### 1. Install R and RStudio
 

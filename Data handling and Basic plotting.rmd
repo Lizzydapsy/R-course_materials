@@ -2,7 +2,7 @@
 title: Data handling and Basic plotting
 author: Elizabeth Oladapo
 output:
-  github_document:
+  github_document
 ---
 
 *(R for Statistics and Data Visualization - An Introduction for Life Scientists 1)*
