@@ -1,17 +1,22 @@
 ---
 title: Linear Models and GLMs
 author: Elizabeth Oladapo
-output:
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output: 
   html_document: 
     toc: yes
-    toc_float:
+    toc_float: 
       collapsed: yes
       smooth_scroll: no
     theme: readable
     highlight: pygments
     code_folding: show
+    css: stylesheets/styles.cs
 ---
 
+<img src="unilogo.jpg" style="position:absolute;top:40px;right:10px;" width="200" />
+
+ 
 <style type="text/css">
 
 body{ /* Normal  */
@@ -20,6 +25,16 @@ body{ /* Normal  */
   }
 td {  /* Table  */
   font-size: 16px;
+}
+h4.author {
+  font-size: 12px;
+  color: Purple;
+  font-style: italic;
+}
+h4.date {
+  font-size: 12px;
+  color: Purple;
+  font-style: italic;
 }
 h1.title {
   font-size: 30px;
