@@ -1,0 +1,350 @@
+---
+title: Data exploration and basic plotting
+author: Elizabeth Oladapo
+output:
+  html_document: 
+    toc: yes
+    highlight: tango
+    theme: readable
+---
+
+*(R for Statistics and Data Visualization - An Introduction for Life Scientists 1)*
+
+
+<br/>
+
+In this section, we will focus on loading data into R and saving files into your project directory and sub directories, exploring data and basic plotting of graphs. 
+
+<br/>
+
+### 1. Download the datasets
+
+<div align="justify">Download the datasets we will be using in this training: 
+
+[ElephantsMF.csv](http://rcg.group.shef.ac.uk/courses/R/Dataset/ElephantsMF.csv) 
+
+[IRIS.csv](http://rcg.group.shef.ac.uk/courses/R/Dataset/IRIS.csv)
+
+Move the two .csv files into the data folder in your project folder ("R-training") on your local machine
+
+<br/>
+
+### 2. Importing data from the data folder into R
+
+Any .csv file can be imported into R using the function read_csv() and assigning it to a new variable to store the result.
+<br/>
+
+Prior to loading your data, make sure to load the required libraries for this section and set up you script with appropriate annotations
+
+__Something to note__: Always annotate your code (with # and break into sections with # and ------) so that when you look back on what you have coded. You understand in detail what a line, chunk or even section of code is trying to accomplish.
+
+```{r}
+### Data Management and Basic graphing (* you can create a section or chapter by putting "----" @ the end of this line)
+### Elizabeth Oladapo
+### 13 February 2023
+
+# Analyzing the data on 288 African elephants that lived through droughts in the first two years of life.
+# The data contains 3 variables and 288 observations.
+# The variables are; Age, Height and sex
+
+##Source:
+# Data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early 
+# experiences: 40-year effects on survival and success among African elephants," Biology Letters, 9: 
+# 20130011.
+
+
+
+# Load the packages I need with the function library()
+
+library("tidyverse") #tidyverse imports ggplot2 and dplyr
+
+```
+
+
+
+A check can be performed with  the function file.exists() which will print TRUE if the file is present in the working directory.
+
+```{r}
+
+file.exists("data/ElephantsMF.csv")
+
+```
+
+Now that the file exists in the working directory, we will need to import it into R to start making R work hard on it.
+
+Import the ElephantsMF.csv file and assign it to a variable name called "Elephants_data"
+
+```{r}
+# Loading the required data
+
+Elephants_data <- read_csv("data/ElephantsMF.csv")
+
+
+```
+
+Look at the data using the function glimpse(), to be sure you have loaded the correct data
+```{r}
+# Looking at the data
+
+glimpse(Elephants_data) 
+
+# or just Elephants_data 
+# or use "str(Elephants_data)"  to show the 'factors' and 'levels' info in output for characters. 
+# Some R version will require that you convert the character variable to factor as seen below, 
+# for str() to show "factors" info.
+# str(Elephants_data,stringsAsFactors=TRUE)
+# Elephants_data$Sex <- as.factor(Elephants_data$Sex)
+
+```
+
+```
+Question 1
+There are three variables in the Elephants_data, which of them are the explanatory variables and which is a response variable?
+
+```
+
+<br/>
+
+### 3. Visualizing data
+
+Visualize the data by generating your first plot in R using the function ggplot() from the package, ggplot2.
+
+```{r}
+
+## Visualize the data1
+
+ggplot(Elephants_data, aes(x = Age, y=Height))+
+  geom_point()    # a continuous response variable with a continuous explanatory variable producing scatterplot
+
+```
+
+```
+Question 2.
+
+What is the relatioship between height and age? any interaction with age groups (below 20 and above 20)?
+
+```
+
+```{r}
+
+## Visualizing the data
+
+ggplot(Elephants_data, aes(x = Sex, y=Height))+
+  geom_col()    # a continuous response variable with a binary explanatory variable producing barcharts
+
+```
+
+<br/>
+
+### 4. Customizing the plot
+
+We can put additional arguments in the aesthetics to customize plot. For example, to see that there are two groups in the data, we will add colour and shape to our the aesthetic.
+
+```{r}
+
+## Visualizing the data
+
+ggplot(Elephants_data, aes(x = Age, y=Height, colour = Sex, shape= Sex))+
+  geom_point(size = 3)    # a continuous response variable with a continuous explanatory variable producing scatterplot
+
+
+
+```
+
+
+
+<br/>
+
+### 5. Manipulating data
+
+We can use several functions in the package, dplyr to explore and manipulate the data.
+
+Please note that it is possible to use the functions in the The [R Base Package](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html) (This package contains the basic functions which makes R a language: arithmetic, input/output, basic programming support, etc. Its contents are available through inheritance from any environment.). However, it is generally easier to read, manipulate and write data using dplyr.
+
+We will be covering some of the functions available in the dplyr here. However, you can get an overview of most functions in dplyr [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+
+
+
+__Note:__ Mostly, observations are in the rows and variables are in the columns
+
+We can access the columns of a data frame using the select function.
+
+***
+
+__Subsetting Variables: Columns__
+
+***
+
+ The variables in our data are Age, Height and Sex as you can see in the environment pane or using the function glimpse().
+ 
+ "select()" from dplyr grabs specific columns and works only with variables
+ 
+ We can select column by name, by adding bare column names (i.e. not requiring quote marks around the name) after the name of the data frame, separated by a , .
+ 
+ Make sure to type the name exactly as it appears in the data. If select sees a name that doesn’t exist in the data frame it will give an informative message Error.
+ 
+ Again, check what select does from the [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+ 
+ 
+```{r}
+
+## subsetting columns
+# select the "Age" variable from the Elephants_data
+
+select(Elephants_data, Age)
+
+```
+
+Columns can also be omitted from the output by putting a minus (-) in front of the column name. 
+
+```{r}
+
+## subsetting columns
+# Omitting the "Age" variable from the Elephants_data
+
+select(Elephants_data, -Age)
+
+```
+
+We can select a range of variables by the : operator.
+
+```{r}
+
+## subsetting columns
+# selecting the variables from "Height" to "Sex" in the Elephants_data
+
+select(Elephants_data, Height:Sex)
+
+```
+
+Helper functions can be utilized to avoid writing the exact names of the column.
+```{r}
+
+## subsetting columns
+# selecting the variables with colnames starting with "He"
+
+select(Elephants_data, starts_with("He"))
+
+
+# selecting the variables with colnames starting with "ex"
+select(Elephants_data, contains("ge"))
+
+# selecting the last column
+select(Elephants_data, last_col())
+
+```
+
+
+There is a different way to get columns with dplyr functions instead of nesting the verbs: Use piping operator " %>% ". Piping is a magical and fast way to do multiple things with dataframe.
+
+Please, use the piping from now on!
+
+```{r}
+
+Elephants_data %>% 
+  select(., Age) 
+
+#instead of "select(Elephants_data, Age)"
+
+```
+
+
+We can select more than one variables
+```{r}
+# Selecting more than one variables
+
+Elephants_data %>% 
+  select(., Age, Height) 
+
+# Remember that you can also select out the variable you don't want instead of selecting a list of variables if you have a large data.
+
+```
+
+It is also possible to use the column number in the selection.
+
+```{r}
+
+Elephants_data %>% 
+  select(., 1:2) 
+
+```
+
+You can select a variable from a dataframe and assign it to an object / a new dataframe
+
+```{r}
+
+Elephant_Subset <- Elephants_data %>% 
+  select(., Age, Height)
+
+```
+
+***
+
+__Subsetting Observations: Rows__
+
+***
+
+"filter()" from dplyr can be used to subset rows of the dataframes when we need to extract particular observations from the data. Don't forget about the [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+
+The usage of filter(), involves using logical operations
+
+x < y: is x less than y?
+
+x > y: is x greater than y?
+
+x >= y: less than or equal to
+
+x == y: equal to (not this is double "equal to" sign, not single)
+
+x != y: not equal to
+
+
+
+We can use these logical operators to perform logical tests to filter the rows in a data frame. This logical test will be applied to each row and give either a TRUE or FALSE result. 
+When filtering, only rows with a TRUE result get returned.
+
+For example, we can filter for rows where the "Height" variable is less than 200.
+
+```{r}
+# grabbing all observations where Height is less than 200 and assigning it to an object called Elephants_200
+
+Elephants_200 <- Elephants_data %>% filter(., Height < 200)
+
+
+# Note that we got all the columns in our dataframe for only the observations we have specified
+
+```
+
+
+__Something to try:__ Filter for rows where the "Age" variable is greater than and equal to 12.8
+
+
+__Exercise 1__
+
+The output you should get, and the graph
+that should be produced, are provided below.
+
+You should:
+• select the fruit and grazing columns
+• filter fruit that is > 90 OR < 30
+• assign this subset of the data to the object fg90_30
+• look at the data
+• produce a scatterplot of Fruit (y) versus Grazing (x), proving that there are only values >90 or <30
+
+
+<br/>
+### 6. Save your results and script!
+
+
+
+
+
+
+
+
+<br/>
+
+__Congratulations on your first script in R, we are now ready for the next stage__
+
+__Return__ to the main course page:
+https://github.com/Lizzydapsy/R-for-Data-Analysis and click on "Manipulating Data and advanced Plotting".
