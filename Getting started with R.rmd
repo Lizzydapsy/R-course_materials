@@ -14,7 +14,7 @@ output:
     css: stylesheets/styles.cs
 ---
 
-<img src="unilogo.jpg" style="position:absolute;top:40px;right:10px;" width="200" />
+<img src="unilogo.jpg" style="position:absolute;top:55px;right:10px;" width="200" />
 
  
 <style type="text/css">
