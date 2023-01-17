@@ -260,4 +260,4 @@ print(b)
 
 **Thumbs up! for getting this section done, we are now ready for the next section**
 
-**Return** to the main course page: <https://github.com/Lizzydapsy/R-for-Data-Analysis> and click on "Data exploration and Basic plotting"
+**Return** to the [main course page:](https://lizzydapsy.github.io/R-for-Data-Analysis/README.html) and click on "Data exploration and Basic plotting"

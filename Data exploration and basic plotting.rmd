@@ -6,7 +6,7 @@ output:
     toc: yes
     toc_float:
       collapsed: yes
-      smooth_scroll: no
+      smooth_scroll: yes
     theme: readable
     highlight: pygments
     code_folding: show
@@ -39,7 +39,7 @@ h3 { /* Header 3 */
   color: DarkBlue;
 }
 code.r{ /* Code block */
-    font-size: 15px;
+    font-size: 14px;
 }
 pre { /* Code block - determines code spacing between lines */
     font-size: 15px;
@@ -48,7 +48,9 @@ pre { /* Code block - determines code spacing between lines */
 
 
 ```{r klippy, echo=FALSE, include=TRUE}
+
 klippy::klippy()
+
 ```
 
 
@@ -60,7 +62,7 @@ In this section, we will focus on loading data into R and saving files into your
 
 ### 1. Download the datasets
 
-<div align="justify">Download the datasets we will be using in this training: 
+Download the datasets we will be using in this training: 
 
 [ElephantsMF.csv](http://rcg.group.shef.ac.uk/courses/R/Dataset/ElephantsMF.csv) 
 
@@ -73,6 +75,7 @@ Move the two .csv files into the data folder in your project folder ("R-training
 ### 2. Importing data from the data folder into R
 
 Any .csv file can be imported into R using the function read_csv() and assigning it to a new variable to store the result.
+
 <br/>
 
 Prior to loading your data, make sure to load the required libraries for this section and set up you script with appropriate annotations
@@ -92,8 +95,6 @@ __Something to note__: Always annotate your code (with # and break into sections
 # Data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early 
 # experiences: 40-year effects on survival and success among African elephants," Biology Letters, 9: 
 # 20130011.
-
-
 
 # Load the packages I need with the function library()
 
@@ -124,6 +125,7 @@ Elephants_data <- read_csv("data/ElephantsMF.csv")
 ```
 
 Look at the data using the function glimpse(), to be sure you have loaded the correct data
+
 ```{r}
 # Looking at the data
 
@@ -359,31 +361,59 @@ Elephants_200 <- Elephants_data %>% filter(., Height < 200)
 
 __Something to try:__ Filter for rows where the "Age" variable is greater than and equal to 12.8
 
+### 6.    Exercises
 
-__Exercise 1__
+__A__
 
-The output you should get, and the graph
-that should be produced, are provided below.
+Generate the output and the graph shown below.
 
-You should:
-• select the fruit and grazing columns
-• filter fruit that is > 90 OR < 30
-• assign this subset of the data to the object fg90_30
+<br/>
+
+Tips:
+
+• select the Height and Age columns
+
+• filter Age that is < 15
+
+• assign the data subset an object named EL_Age_15
+
 • look at the data
-• produce a scatterplot of Fruit (y) versus Grazing (x), proving that there are only values >90 or <30
+
+• produce a scatterplot of Height (x) versus Age (y), proving that there are only age values < 15
+
+<br/>
+
+```{r echo=FALSE, include=TRUE}
+
+# selecting the Height and Age columns with Age that is < 15 and assigning the data subset an object named EL_Age_15
+
+EL_Age_15 <- Elephants_data %>% 
+  select(., Height, Age) %>% 
+  filter(., Age < 15)
+
+# look at the data
+
+glimpse(EL_Age_15)
+
+# producing a scatterplot of Age (y) versus Height (x)
+EL_Age_15 %>% ggplot(., aes( x=Age, y=Height))+
+  geom_point()
+
+```
+
 
 
 <br/>
 
-### 6. Save your results and script!
+### 7. Save your results and script!
 
+```
+write.csv(" ")
 
-
-
+```
 
 <br/>
 
 __Congratulations on your first script in R, we are now ready for the next stage__
 
-__Return__ to the main course page:
-https://github.com/Lizzydapsy/R-for-Data-Analysis and click on "Data manipulation and advanced plotting".
+__Return__ to the [main course page:](https://lizzydapsy.github.io/R-for-Data-Analysis/README.html) and click on "Data manipulation and advanced plotting".
