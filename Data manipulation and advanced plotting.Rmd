@@ -1,5 +1,5 @@
 ---
-title: Basic statistics - t-test
+title: Data manipulation and advanced plotting
 author: Elizabeth Oladapo
 output:
   html_document: 

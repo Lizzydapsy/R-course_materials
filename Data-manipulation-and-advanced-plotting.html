@@ -12,7 +12,7 @@
 <meta name="author" content="Elizabeth Oladapo" />
 
 
-<title>Setting up R and RStudio / Getting started with R</title>
+<title>Data manipulation and advanced plotting</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1543,116 +1543,6 @@ ul.task-list{list-style: none;}
 
 
 
-<style type="text/css">
-code {
-white-space: pre;
-}
-.sourceCode {
-overflow: visible;
-}
-</style>
-<style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-{ counter-reset: source-line 0; }
-pre.numberSource code > span
-{ position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-{ content: counter(source-line);
-position: relative; left: -1em; text-align: right; vertical-align: baseline;
-border: none; display: inline-block;
--webkit-touch-callout: none; -webkit-user-select: none;
--khtml-user-select: none; -moz-user-select: none;
--ms-user-select: none; user-select: none;
-padding: 0 4px; width: 4em;
-color: #aaaaaa;
-}
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
-div.sourceCode
-{ }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } 
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
-code span.at { color: #7d9029; } 
-code span.bn { color: #40a070; } 
-code span.bu { color: #008000; } 
-code span.cf { color: #007020; font-weight: bold; } 
-code span.ch { color: #4070a0; } 
-code span.cn { color: #880000; } 
-code span.co { color: #60a0b0; font-style: italic; } 
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
-code span.do { color: #ba2121; font-style: italic; } 
-code span.dt { color: #902000; } 
-code span.dv { color: #40a070; } 
-code span.er { color: #ff0000; font-weight: bold; } 
-code span.ex { } 
-code span.fl { color: #40a070; } 
-code span.fu { color: #06287e; } 
-code span.im { color: #008000; font-weight: bold; } 
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
-code span.kw { color: #007020; font-weight: bold; } 
-code span.op { color: #666666; } 
-code span.ot { color: #007020; } 
-code span.pp { color: #bc7a00; } 
-code span.sc { color: #4070a0; } 
-code span.ss { color: #bb6688; } 
-code span.st { color: #4070a0; } 
-code span.va { color: #19177c; } 
-code span.vs { color: #4070a0; } 
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
-.sourceCode .row {
-width: 100%;
-}
-.sourceCode {
-overflow-x: auto;
-}
-.code-folding-btn {
-margin-right: -30px;
-}
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    var j = 0;
-    while (j < rules.length) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
-        j++;
-        continue;
-      }
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') {
-        j++;
-        continue;
-      }
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
-</script>
 
 
 
@@ -1825,8 +1715,8 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">Setting up R and RStudio / Getting started
-with R</h1>
+<h1 class="title toc-ignore">Data manipulation and advanced
+plotting</h1>
 <h4 class="author">Elizabeth Oladapo</h4>
 
 </div>
@@ -1834,11 +1724,11 @@ with R</h1>
 
 <style type="text/css">
 body{ 
-font-size: 18px;
+font-size: 17px;
 text-align: justify;
 }
 td { 
-font-size: 10px;
+font-size: 16px;
 }
 h1.title {
 font-size: 30px;
@@ -1869,184 +1759,6 @@ font-size: 15px;
   addKlippy('left', 'top', 'auto', '1', 'Copy code', 'Copied!');
 </script>
 <p><br /></p>
-<p>The aim of this section is to get you started with installing R and
-RStudio on your computer, customize RStudio and installing
-R-packages</p>
-<p><br /></p>
-<div id="install-r-and-rstudio" class="section level3">
-<h3>1. Install R and RStudio</h3>
-<p>Download the latest version RStudio Desktop version <a href="https://posit.co/download/rstudio-desktop/#download">here</a> (You
-do not have to figure out what version or type of installer to download,
-the page automatically figures out what is compatible with the operating
-system you are using).</p>
-<p>Download the latest version of R Desktop version from <a href="https://cran.r-project.org/">CRAN</a>, for your operating
-system.</p>
-<hr />
-<p>Choose the right one for your system</p>
-<hr />
-<p><strong>Windows</strong></p>
-<p>Install R by downloading and running the .exe file from CRAN. Note
-that if you have separate user and admin accounts, you should run the
-installers as administrator (right-click on .exe file and select “Run as
-administrator” instead of double-clicking). Otherwise problems may occur
-later, for example when installing R packages.</p>
-<p><strong>Mac</strong></p>
-<p>Install R by downloading and running the .pkg file from CRAN.</p>
-<p><strong>Linux</strong></p>
-<p>Download the binary files for your distribution from CRAN Or use your
-package manager (e.g. for Debian/Ubuntu run sudo apt-get install r-base
-and for Fedora run sudo yum install R).</p>
-<p><br /></p>
-<p><strong>Note that</strong> We will always open RStudio to use R</p>
-<p><br /></p>
-</div>
-<div id="customizing-rstudio" class="section level3">
-<h3>2. Customizing RStudio</h3>
-<p>Open RStudio</p>
-<p>RStudio has four main panes each in a quadrant of your screen: Script
-Editor, Console, Workspace Environment (and History), and Plots (and
-Files, Packages, Help). Generally, we will want to write programs longer
-than a few lines.</p>
-<p>Navigate to Tools → Global options → Appearance and switch the theme
-in the Editor Theme option. By default, you will have the Textmate theme
-activated.</p>
-<p><br /></p>
-</div>
-<div id="installing-r-packages" class="section level3">
-<h3>3. Installing R Packages</h3>
-<p>We will be installing some extra R packages required for the training
-as we proceed. However, there are R functions that can check whether a
-package is currently installed. For example, the find.package
-function:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find.package</span>(<span class="st">&quot;MASS&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;C:/Program Files/R/R-4.2.2/library/MASS&quot;</code></pre>
-<p>The Comprehensive R Archive Network (CRAN) repository stores
-thousands of stable R packages designed for a variety of data-related
-tasks. Most often, you will use this repository to install various R
-packages.</p>
-<p>To install an R package from CRAN, we can use the install.packages()
-function:</p>
-<pre><code>install.packages(&#39;readr&#39;)</code></pre>
-<p><br /></p>
-<p>We can use the same function to install several R packages at once.
-For this, we need to apply first the c() function to create a character
-vector containing all the desired packages for example:</p>
-<pre><code>install.packages(c(&#39;ggplot2&#39;, &#39;dplyr&#39;))</code></pre>
-<p>Above, we have installed two R packages: ggplot2 (for data
-visualization) and dplyr (for data manipulation).</p>
-<hr />
-<p>Alternative Method</p>
-<hr />
-<p>In an IDE such as RStudio, we can use the menu instead of the
-install.packages() function to install the necessary modules from the
-CRAN repository by completing the following steps:</p>
-<p>Click Tools → Install Packages</p>
-<p>Select Repository (CRAN) in the Install from: slot</p>
-<p>Type the package name (or several package names, separated with a
-white space or comma)</p>
-<p>Leave Install dependencies ticked as by default</p>
-<p>Click Install</p>
-<p><strong>In addition</strong>, R Packages can be installed from Other
-Sources such as GitHub, Zip Files downloaded on your local machine as a
-.zip or tar.gz file, but we will not cover this here.</p>
-<p><br /></p>
-</div>
-<div id="loading-r-packages" class="section level3">
-<h3>4. Loading R Packages</h3>
-<p>Once the necessary packages have been installed, the next step is to
-load each package to start working with them. While we need to install
-each package only once (i.e., the first time using R on a particular
-computer), we may have to load each package for every new R version. For
-this purpose, we use the library() function and pass in the package
-name, as follows:</p>
-<pre><code>library(dplyr)</code></pre>
-<p><strong>Note that</strong>, in this case, we don’t need to include
-the package name in quotation marks and we cannot load more than one
-package at a time.</p>
-<p><br /></p>
-</div>
-<div id="setup-an-rstudio-project" class="section level3">
-<h3>5. Setup an RStudio project</h3>
-<p>Rstudio project is an R analysis structure that makes it easy and
-straightforward to divide your projects into multiple contexts, each
-with their own working directory, environment, history, and source
-documents… creating a very clean working environment.</p>
-<p>Using RStudio projects eliminates so much of the early-stage hassles
-and confusions around reading in and exporting data. Setting up a
-working directory properly also helps build up good habits that are
-conducive to reproducible analysis (Can be shared with collaborators to
-have access to your work space, data and scripts in one go).</p>
-<hr />
-<p>Create your project directory/folder</p>
-<hr />
-<p>Navigate to your file explorer window</p>
-<p>File explorer window -&gt; Document folder or Google drive folder
--&gt; Make a new folder called “R - training” (Parent directory) -&gt;
-Make two offspring folders: Data and Scripts</p>
-<p>Now, Open up RStudio and create an RStudio project using the menu
-File -&gt; New Project -&gt; Existing Directory and browse to the
-directory that you named “R- training” -&gt; Create Project</p>
-<p>Rstudio will refresh so that the working directory corresponds to the
-course data folder, “R-training”.</p>
-<p>Quit your RStudio, navigate to your R-training folder double click
-your project to open up RStudio which now contains your data folder and
-scripts folder in your files pane.</p>
-<p><br /></p>
-</div>
-<div id="working-at-the-rstudio-script-pane" class="section level3">
-<h3>6. Working at the RStudio script pane</h3>
-<p>R is used interactively - you type an instruction to “do something”
-and the instruction will be interpreted when you hit the Enter key.</p>
-<hr />
-<p>Let’s briefly see some useful shortcut keys:</p>
-<hr />
-<p><strong>ctrl/cmd + enter</strong>: Submit a R code line or block of
-code from script to the R console</p>
-<p><strong>ctrl+shift+C</strong>: Comments out line</p>
-<p><strong>ctrl+shift+R</strong>: Inserts section break (useful with
-outline enabled)</p>
-<p><strong>alt+-</strong>: Inserts the &lt;- (Used to assign stuffs to
-variables/objects)</p>
-<p><strong>ctrl+shift+M</strong>: Inserts the pipe operator %&gt;% (very
-useful shortcut)</p>
-<p><strong>ctrl+D</strong>: Deletes entire line</p>
-<p><br /></p>
-<p>Let’s try simple arithmetic with R.</p>
-<p>Type 1 + 3 at the scripting pane and hit Ctrl+Enter keys:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">13</span></span></code></pre></div>
-<pre><code>## [1] 14</code></pre>
-<p>The answer is shown at the console with a [1] in front of it
-signifying how many values were in the answer (in this case only
-one).</p>
-<p><br /></p>
-<p>Let’s run some more codes</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello World&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Hello World&quot;</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] 12</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> (<span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div>
-<pre><code>## [1] 17</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pi</span></code></pre></div>
-<pre><code>## [1] 3.141593</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>pi</span></code></pre></div>
-<pre><code>## [1] 6.283185</code></pre>
-<p><br /></p>
-<p>Assign some of these elements to variables/objects</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="dv">5</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> (<span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div>
-<p><br /></p>
-<p>Print the variables</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span></code></pre></div>
-<pre><code>## [1] 12</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(b)</span></code></pre></div>
-<pre><code>## [1] 17</code></pre>
-<p><br /></p>
-<p><strong>Thumbs up! for getting this section done, we are now ready
-for the next section</strong></p>
-<p><strong>Return</strong> to the main course page: <a href="https://github.com/Lizzydapsy/R-for-Data-Analysis" class="uri">https://github.com/Lizzydapsy/R-for-Data-Analysis</a> and
-click on “Data exploration and Basic plotting”</p>
-</div>
 
 
 

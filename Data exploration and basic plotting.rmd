@@ -4,11 +4,52 @@ author: Elizabeth Oladapo
 output:
   html_document: 
     toc: yes
-    highlight: tango
+    toc_float:
+      collapsed: yes
+      smooth_scroll: no
     theme: readable
+    highlight: pygments
+    code_folding: show
 ---
 
-*(R for Statistics and Data Visualization - An Introduction for Life Scientists 1)*
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 17px;
+      text-align: justify;
+  }
+td {  /* Table  */
+  font-size: 16px;
+}
+h1.title {
+  font-size: 30px;
+  color: DarkPurple;
+}
+h1 { /* Header 1 */
+  font-size: 28px;
+  color: Purple;
+}
+h2 { /* Header 2 */
+    font-size: 22px;
+  color: DarkBlue;
+  font-style: italic;
+}
+h3 { /* Header 3 */
+  font-size: 20px;
+  color: DarkBlue;
+}
+code.r{ /* Code block */
+    font-size: 15px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 15px;
+}
+</style>
+
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy()
+```
 
 
 <br/>
@@ -333,10 +374,8 @@ You should:
 
 
 <br/>
+
 ### 6. Save your results and script!
-
-
-
 
 
 
@@ -347,4 +386,4 @@ You should:
 __Congratulations on your first script in R, we are now ready for the next stage__
 
 __Return__ to the main course page:
-https://github.com/Lizzydapsy/R-for-Data-Analysis and click on "Manipulating Data and advanced Plotting".
+https://github.com/Lizzydapsy/R-for-Data-Analysis and click on "Data manipulation and advanced plotting".

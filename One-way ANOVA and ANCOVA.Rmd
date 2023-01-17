@@ -1,0 +1,57 @@
+---
+title: One-way ANOVA and ANCOVA
+author: Elizabeth Oladapo
+output:
+  html_document: 
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: no
+    theme: readable
+    highlight: pygments
+    code_folding: show
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 17px;
+      text-align: justify;
+  }
+td {  /* Table  */
+  font-size: 16px;
+}
+h1.title {
+  font-size: 30px;
+  color: DarkPurple;
+}
+h1 { /* Header 1 */
+  font-size: 28px;
+  color: Purple;
+}
+h2 { /* Header 2 */
+    font-size: 22px;
+  color: DarkBlue;
+  font-style: italic;
+}
+h3 { /* Header 3 */
+  font-size: 20px;
+  color: DarkBlue;
+}
+code.r{ /* Code block */
+    font-size: 14px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 15px;
+}
+</style>
+
+
+```{r klippy, echo=FALSE, include=TRUE}
+
+klippy::klippy()
+
+```
+
+
+<br/>

@@ -1,18 +1,62 @@
 ---
 title: Setting up R and RStudio / Getting started with R
-subtitle: (R for Statistics and Data Visualization - An Introduction for Life Scientists 1)
 author: Elizabeth Oladapo
-
 output:
   html_document: 
     toc: yes
-    highlight: pygments
+    toc_float:
+      collapsed: yes
+      smooth_scroll: no
     theme: readable
+    highlight: pygments
+    code_folding: show
 ---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 17px;
+      text-align: justify;
+  }
+td {  /* Table  */
+  font-size: 16px;
+}
+h1.title {
+  font-size: 30px;
+  color: DarkPurple;
+}
+h1 { /* Header 1 */
+  font-size: 28px;
+  color: Purple;
+}
+h2 { /* Header 2 */
+    font-size: 22px;
+  color: DarkBlue;
+  font-style: italic;
+}
+h3 { /* Header 3 */
+  font-size: 20px;
+  color: DarkBlue;
+}
+code.r{ /* Code block */
+    font-size: 14px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 15px;
+}
+</style>
+
+
+```{r klippy, echo=FALSE, include=TRUE}
+
+klippy::klippy()
+
+```
+
 
 <br/>
 
-<div align="justify">The aim of this section is to get you started with installing R and RStudio on your computer, customize RStudio and installing R-packages
+The aim of this section is to get you started with installing R and RStudio on your computer, customize RStudio and installing R-packages
 
 <br/>
 
@@ -216,4 +260,4 @@ print(b)
 
 **Thumbs up! for getting this section done, we are now ready for the next section**
 
-**Return** to the main course page: <https://github.com/Lizzydapsy/R-for-Data-Analysis> and click on "Data handling and Basic plotting"
+**Return** to the main course page: <https://github.com/Lizzydapsy/R-for-Data-Analysis> and click on "Data exploration and Basic plotting"
