@@ -426,6 +426,9 @@ EL_Age_15 %>% ggplot(., aes( x=Age, y=Height))+
 write.csv(" ")
 
 ```
+<br/>
+
+### Here are the [solutions](https://lizzydapsy.github.io/R-course_materials/Solutions.html) to all the exercises.
 
 <br/>
 
