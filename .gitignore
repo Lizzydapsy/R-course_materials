@@ -7,3 +7,5 @@ data
 Getting started with R.Rmd
 Data manipulation and advanced plotting.Rmd
 Data exploration and basic plotting.rmd
+.gitignore
+Solutions.Rmd
