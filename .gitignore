@@ -4,13 +4,13 @@ data
 README.Rmd
 title.png
 title.pptx
-Getting-started-with-R.Rmd
-Linear-Models-and-GLMs.Rmd
+Getting started with R.Rmd
+Linear Models and GLMs.Rmd
 Data manipulation and advanced plotting.Rmd
 One-way ANOVA and ANCOVA.Rmd
-Basic-statistics---chi-square-test.Rmd
-Basic-statistics---t-test.Rmd
-Data exploration and basic plotting.rmd
+Basic statistics - chi-square test.Rmd
+Basic statistics - t-test.Rmd
+Data exploration and basic plotting.Rmd
 Solutions.Rmd
 
 
