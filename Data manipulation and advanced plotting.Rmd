@@ -414,7 +414,7 @@ Don’t forget to use ylab() to make that y-axis text.
 
 You might want to bookmark [Cookbook for R](http://www.cookbook-r.com). It’s a very handy resource for ggplot graph manipulations.
 
-Split the data into the three diet groups and plot each of them in their own
+Split the data into the three "Period" groups and plot each of them in their own
 panel - we do this with the facet_grid() layer. 
 
 Note that facet_grid() should come after the errorbars layer, but before the
@@ -442,7 +442,7 @@ sumMortality %>%
 
 <br/><br/>
 
-__If you’ve managed do successful do all of these, you have some great skills, congrats!__
+__If you have managed to successful do all of these, you now have some great R skills, congrats!__
 
 We have come to the end of the R course section 1. The date for the other section will be communicated to you in due course. Here are the [solutions](https://lizzydapsy.github.io/R-course_materials/Solutions.html) to all the exercises.
 
