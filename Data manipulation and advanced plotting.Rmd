@@ -14,6 +14,13 @@ output:
     code_folding: show
 ---
 
+```{r klippy, echo=FALSE, include=TRUE}
+
+klippy::klippy()
+
+```
+
+
 
 <img src="unilogo.jpg" style="position:absolute;top:70px;right:10px;" width="200" />
 
