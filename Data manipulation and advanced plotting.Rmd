@@ -417,10 +417,10 @@ You might want to bookmark [Cookbook for R](http://www.cookbook-r.com). It’s a
 Split the data into the three "Period" groups and plot each of them in their own
 panel - we do this with the facet_grid() layer. 
 
-Note that facet_grid() should come after the errorbars layer, but before the
+Note that facet_grid() should come after the error bars layer, but before the
 theme_bw(). 
 
-Get your x-axis tick labels rotated, add theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) after theme_bw()+ 
+Get your x-axis tick labels rotated by adding theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) after theme_bw()+ 
 
 
 ```{r echo=FALSE, include=TRUE, warning=FALSE}
