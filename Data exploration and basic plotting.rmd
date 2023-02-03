@@ -8,65 +8,14 @@ output:
     toc_float: 
       collapsed: yes
       smooth_scroll: no
+    css: stylesheets/styles.css
     theme: readable
     highlight: pygments
     code_folding: show
-    css: stylesheets/styles.cs
 ---
 
-<img src="unilogo.jpg" style="position:absolute;top:40px;right:10px;" width="200" />
 
- 
-<style type="text/css">
-
-body{ /* Normal  */
-      font-size: 17px;
-      text-align: justify;
-  }
-td {  /* Table  */
-  font-size: 16px;
-}
-h4.author {
-  font-size: 12px;
-  color: Purple;
-  font-style: italic;
-}
-h4.date {
-  font-size: 12px;
-  color: Purple;
-  font-style: italic;
-}
-h1.title {
-  font-size: 30px;
-  color: DarkPurple;
-}
-h1 { /* Header 1 */
-  font-size: 28px;
-  color: Purple;
-}
-h2 { /* Header 2 */
-    font-size: 22px;
-  color: DarkBlue;
-  font-style: italic;
-}
-h3 { /* Header 3 */
-  font-size: 20px;
-  color: DarkBlue;
-}
-code.r{ /* Code block */
-    font-size: 14px;
-}
-pre { /* Code block - determines code spacing between lines */
-    font-size: 15px;
-}
-</style>
-
-
-```{r klippy, echo=FALSE, include=TRUE}
-
-klippy::klippy()
-
-```
+<img src="unilogo.jpg" style="position:absolute;top:70px;right:10px;" width="200" />
 
 
 <br/>
@@ -77,7 +26,7 @@ In this section, we will focus on loading data into R and saving files into your
 
 ### 1. Download the datasets
 
-Download the datasets we will be using in this training: 
+Download the datasets we will be using in this section: 
 
 [ElephantsMF.csv](http://rcg.group.shef.ac.uk/courses/R/Dataset/ElephantsMF.csv) 
 
@@ -134,7 +83,7 @@ Import the ElephantsMF.csv file and assign it to a variable name called "Elephan
 ```{r}
 # Loading the required data
 
-Elephants_data <- read_csv("data/ElephantsMF.csv")
+Elephants_data <- read_csv("./data/ElephantsMF.csv")
 
 
 ```
@@ -154,6 +103,13 @@ glimpse(Elephants_data)
 # Elephants_data$Sex <- as.factor(Elephants_data$Sex)
 
 ```
+
+<br/>
+
+A basic dataframe organizes data into a two-dimensional grid of rows and colums, much like a spreadsheet. In general, we will refer to the rows of the dataframe as observations, and the  columns as variables.
+
+<br/>
+
 
 ```
 Question 1
@@ -202,9 +158,8 @@ We can put additional arguments in the aesthetics to customize plot. For example
 
 ## Visualizing the data
 
-ggplot(Elephants_data, aes(x = Age, y=Height, colour = Sex, shape= Sex))+
+ggplot(Elephants_data, aes(x = Age, y=Height, colour = Sex))+
   geom_point(size = 3)    # a continuous response variable with a continuous explanatory variable producing scatterplot
-
 
 
 ```
@@ -376,9 +331,81 @@ Elephants_200 <- Elephants_data %>% filter(., Height < 200)
 
 __Something to try:__ Filter for rows where the "Age" variable is greater than and equal to 12.8
 
-### 6.    Exercises
+<br/>
 
-__A__
+You can filter with multiple criteria
+
+Use "|" for "or" statement. 
+Use "&" for "and" statement.
+
+(We will cover more on this in the next session)
+
+<br/>
+
+For example, subset for Height values greater than 300 or the Age values less than or equal to 0.1 
+
+```{r}
+Elephants_data %>% filter(., Height > 300 | Age <= 0.1)
+
+```
+
+subset for Height values greater than 300 and the Age values less than or equal to 0.1 
+
+```{r}
+
+# Use "&" or ","
+
+Elephants_data %>% filter(., Height > 300 & Age <= 0.1)
+```
+
+
+
+***
+
+__Subsetting Variables and observations__
+
+***
+<br/>
+
+As well as selecting columns or select rows in the data frame, both columns and rows can be selected by combining filter() with select(). 
+
+Here, we create a subset of Elephants_data containing Males of age 30 and above including their height data.
+
+```{r}
+
+Elephants_data %>% 
+  filter(., Age >= 25 & Sex == "M" ) %>% # make sure to filter first. If you select first, you will not be able to filter on the other variables
+  select(., c("Sex","Height"))
+  
+```
+
+<br/>
+
+### 6. Go ahead and Save your results and script!
+
+You can save your script by clicking on the Save icon at the top of the Script Editor panel. When you do that, a Save File dialog will open. 
+
+or
+
+File -> Save As..
+
+<br/>
+
+To save your result as a file, use write.csv(). For example save the Elephants_200 data and name the file Elephants_200.csv.
+
+```{r}
+
+write.csv(Elephants_200, "Elephants_200.csv")
+
+```
+
+<br/>
+
+### 7.    Exercises
+
+<br/>
+
+__(A)__
 
 Generate the output and the graph shown below.
 
@@ -398,6 +425,7 @@ Tips:
 
 <br/>
 
+
 ```{r echo=FALSE, include=TRUE}
 
 # selecting the Height and Age columns with Age that is < 15 and assigning the data subset an object named EL_Age_15
@@ -416,22 +444,98 @@ EL_Age_15 %>% ggplot(., aes( x=Age, y=Height))+
 
 ```
 
-
-
 <br/>
 
-### 7. Save your results and script!
+__(B)__
+
+Produce the following data frame from Elephants_data using filter(); you need to identify the observations for where it is
+TRUE that the Sex is female
+
+```{r echo=FALSE, include=TRUE}
+
+# selecting only the data on females
+
+Elephants_data %>% 
+  filter(., Sex == "F")
+
 
 ```
-write.csv(" ")
+<br/>
+
+__(C)__
+
+Prepare a new script and import the IRIS.csv data. 
+
+<br/>
+
+The Iris dataset is from R.A. Fisher's classic 1936 paper, "The Use of Multiple Measurements in Taxonomic Problems".
+These are data on iris species with 50 samples each as well as some properties of each flower. One flower species is linearly separable from the other two, but the other two are not linearly separable from each other.
+
+<br/>
+
+The column names in this dataset are:
+
+
+
+SepalLength
+
+SepalWidth
+
+PetalLength
+
+PetalWidth
+
+Species
+
+
+<br/>
+
+Import these data and follow the instruction below to produce the following output.
+
+Don’t forget to start your script with ## for annotation libraries, data import,
+and checking the data. 
+
+Make sure you have these annotated sections, and save this script!
+
+<br/>
+
+Filter the data so that there are only
+
+• Iris-setosa
+
+• petal_width of 0.2 cm
+
+• petal_length greater than or equal to 1.3
+
+<br/><br/>
+
+Expected outputs
+
+
+
+```{r echo=FALSE, include=TRUE, warning=FALSE}
+
+### Working with IRIS data
+## load the required packages
+
+library("tidyverse")
+
+## Import the data
+IRIS <- read_csv("data/IRIS.csv")
+
+## check the data
+glimpse(IRIS)
+
+## filtering the data
+IRIS %>% filter(., species=="Iris-setosa"& petal_width==0.2&petal_length>=1.3)
+
 
 ```
-<br/>
-
-### Here are the [solutions](https://lizzydapsy.github.io/R-course_materials/Solutions.html) to all the exercises.
 
 <br/>
 
-__Congratulations on your first script in R, we are now ready for the next stage__
+__Congratulations on your first script in R, here are the [solutions](https://lizzydapsy.github.io/R-course_materials/Solutions.html) to all the exercises.__
 
-__Return__ to the [main course page:](https://lizzydapsy.github.io/R-for-Data-Analysis/README.html) and click on "Data manipulation and advanced plotting".
+__We are now ready for the next stage.__
+
+__Return__ to the [main course page](https://lizzydapsy.github.io/R-for-Data-Analysis/README.html) and click on "Data manipulation and advanced plotting".

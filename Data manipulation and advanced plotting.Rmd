@@ -8,65 +8,437 @@ output:
     toc_float: 
       collapsed: yes
       smooth_scroll: no
+    css: stylesheets/styles.css
     theme: readable
     highlight: pygments
     code_folding: show
-    css: stylesheets/styles.cs
 ---
 
-<img src="unilogo.jpg" style="position:absolute;top:40px;right:10px;" width="200" />
 
- 
-<style type="text/css">
-
-body{ /* Normal  */
-      font-size: 17px;
-      text-align: justify;
-  }
-td {  /* Table  */
-  font-size: 16px;
-}
-h4.author {
-  font-size: 12px;
-  color: Purple;
-  font-style: italic;
-}
-h4.date {
-  font-size: 12px;
-  color: Purple;
-  font-style: italic;
-}
-h1.title {
-  font-size: 30px;
-  color: DarkPurple;
-}
-h1 { /* Header 1 */
-  font-size: 28px;
-  color: Purple;
-}
-h2 { /* Header 2 */
-    font-size: 22px;
-  color: DarkBlue;
-  font-style: italic;
-}
-h3 { /* Header 3 */
-  font-size: 20px;
-  color: DarkBlue;
-}
-code.r{ /* Code block */
-    font-size: 14px;
-}
-pre { /* Code block - determines code spacing between lines */
-    font-size: 15px;
-}
-</style>
+<img src="unilogo.jpg" style="position:absolute;top:70px;right:10px;" width="200" />
 
 
-```{r klippy, echo=FALSE, include=TRUE}
+<br/>
 
-klippy::klippy()
+In this section, we will introduce new graphic styles with histogram, boxplots and faceting, scatterplot customization methods and data summaries for example, calculating means, standard deviations and standard errors.
+
+<br/>
+
+### 1. Download additional datasets
+
+In this section, you will use the adult mortality rate dataset. Download the [Mortality.csv](http://rcg.group.shef.ac.uk/courses/R/Dataset/Mortality.csv) and move it into the data folder in your project folder ("R-training") on your local machine
+
+<br/>
+
+This data is extracted from [WHO](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/adult-mortality-rate-(probability-of-dying-between-15-and-60-years-per-1000-population))
+
+<br/>
+
+The World Health Organization (WHO) defines adult mortality rate as the probability that a 15 year old person will die before reaching his/her 60th birthday. The probability of dying between the ages of 15 and 60 years (per 1000 population) per year among a hypothetical cohort of 100,000 people that would experience the age-specific mortality rate of the reporting year.
+
+<br/>
+
+__Note:__ You will need to set up another script for the section. You may name your new script "Data manipulation and advanced plotting".
+
+Set up your annotated sections such as description of your work, loading the packages, data import, and checking the data. 
+
+
+
+
+```{r}
+
+### Working with adult mortality rate data
+## load the required packages
+
+library("tidyverse")
+
+## Import the data
+Mortality <- read_csv("./data/Mortality.csv")
+
+## check the data
+glimpse(Mortality)
+
+
+```
+
+<br/>
+
+### 2.   Generating histograms
+
+
+A histogram is a graphical representation of data points organized into user-specified ranges. 
+
+It shows the distribution of numerical data (There are many different classifications of probability distributions. Some of them include the normal distribution, chi square distribution, binomial distribution, and Poisson distribution).
+
+Histograms are sometimes confused with bar charts. A histogram is used for continuous data, where the bins represent ranges of data, 
+while a bar chart is a plot of categorical variables. Some authors recommend that bar charts have gaps between the rectangles to clarify the distinction.
+
+Note that in histograms aesthetics are only based on one variable.
+
+
+```{r}
+## Generating a histogram
+
+# Looking at the distribution of Adult mortality rate
+ggplot(Mortality, aes(x=Adult_mortality_rate))+
+  geom_histogram()+
+  theme_bw() #get rid of the grey background
+
+
+```
+
+By default, the underlying computation of geom_histogram through stat_bin uses 30 bins, which is not always a good default.
+
+This is the reason why you get the following message every time you create a default histogram in ggplot2:
+
+```
+stat_bin() using bins = 30. Pick better value with `binwidth`.
+
+```
+
+<br/>
+
+You can pick better value with binwidth or bins
+
+• The number of bins or bars of the histogram can be customized with the bins argument of the geom_histogram function.
+
+• The binwidth argument of the geom_histogram function. This argument controls the width of each bin along the X-axis
+
+<br/>
+
+Divide the histogram into groups based on the ParentLocation variable to allow us see the histograms of each continent. 
+
+
+```{r}
+## Generating a histogram
+
+# Looking at the distribution of Adult mortality rate
+ggplot(Mortality, aes(x=Adult_mortality_rate))+
+  geom_histogram()+
+  facet_grid(. ~ ParentLocation)+
+  # or facet_grid(ParentLocation ~ .)+ for creating a stacked rather than side by side
+  theme_bw() #get rid of the grey background
+
+
+```
+<br/>
+
+### 2.   Boxplot
+
+
+Note that aesthetics here will  be  based on two variables.
+
+```{r}
+
+## Generating a boxplot
+# boxplot with raw data
+ggplot(Mortality, aes(x=ParentLocation, y=Adult_mortality_rate))+
+  geom_boxplot()+ # shows range of data
+  geom_point(alpha=0.15, size=2)+ # shows the raw data (you can also use geom_point())
+  theme_classic() 
+
+# boxplot with jittered raw data
+ggplot(Mortality, aes(x=ParentLocation, y=Adult_mortality_rate))+
+  geom_boxplot()+ # shows range of data
+  geom_jitter(alpha=0.15, size=2, height = 0, width = 0.4)+ # shows the raw data (you can also use geom_point())
+  theme_classic() 
+
+# Not that by default, built up layers inherits information from ggplot, unless otherwise stated.
+  
+
+```
+
+
+
+<br/>
+
+### 3.   Scatterplot customization
+<br/>
+We will use the Elephants_data for this purpose
+
+```{r}
+# You can reload the data
+
+Elephants_data <- read_csv("./data/ElephantsMF.csv")
 
 ```
 
 
 <br/>
+
+You can add colour to your plot by adding colour argument to the geom_point function. The colour value can be any of the examples shown [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf). Red, Green, Blue of Hex values can also be given.
+
+
+```{r}
+
+ggplot(Elephants_data, aes(x=Age, y=Height))+
+  geom_point(colour="darkviolet")+ 
+  theme_bw() 
+
+```
+
+
+
+Also, in ggplot2 colours can be treated as aesthetics of the plot. In other words we can use a column in our dataset to specify colour.
+
+For example, we want points on our plot to be coloured according to Sex. We add an extra argument to the definition of aesthetics to define the mapping. 
+
+```{r}
+
+ggplot(Elephants_data, aes(x=Age, y=Height, colour=Sex, shape = Sex))+
+  geom_point(size=3)+ 
+  ylab("Height of humans (cm)")+
+  xlab("Age (years)")+      #change x and y axis titles
+ # ylim(0,350) + xlim(0,40)+   # change the axis ranges i.e the limit of x and y axis (this is not always advisable because ggplot automatically determines the best range limit of data. Be careful using this!) 
+ scale_colour_manual(values = c(F = "pink", M="blue"))+ # you can add colours to change the ggplot default colours
+  theme_bw() # get rid of the gray background. Use ?theme in the console environment to see other available background theme
+
+# It is possible to customize the non-data components of your plots: i.e. titles, labels, fonts. Use the help function for documentation e.g help(theme) or ?theme. Let's see some of the examples in the help file.
+
+
+```
+
+
+<br/>
+
+You can choose specific colour palettes, such as those provided by the RColorBrewer package. This package provides palettes for different types of scale (sequential, diverging, qualitative).
+
+```
+library(RColorBrewer)
+display.brewer.all(colorblindFriendly = TRUE)
+
+ggplot(Elephants_data, aes(x=Age, y=Height, colour=Sex, shape = Sex))+
+  geom_point(size=3)+ 
+ scale_colour_manual(values = brewer.pal(3,"Greens"))+ 
+  theme_bw() 
+
+```
+
+
+<br/>
+
+__Exercise A__
+
+Make the boxplot of Mortality data to be coloured according to "ParentLocation" while making x to be ParentLocation and y, Adult_mortality_rate .
+
+
+<br/>
+
+Hints:
+
+In boxplot, the colour argument changes the colour of the lines. 
+
+To change the colour of the boxes we have to use fill.
+
+<br/>
+
+```{r echo=FALSE, include=TRUE, warning=FALSE}
+
+ggplot(Mortality, aes(x=ParentLocation, y=Adult_mortality_rate, colour = ParentLocation))+
+  geom_boxplot()+ # shows range of data
+  geom_point(alpha=0.15, size=2)+ # shows the raw data (you can also use geom_point())
+  theme_classic() 
+
+```
+
+
+### 4.   Summarising and grouping data with dplyr package in tidyverse
+<br/>
+
+The summarise function can take any R function that takes a vector of values to calculate and returns a single value. 
+
+Some of the functions include:
+
+min() minimum value
+
+max() maximum value
+
+sum() sum of values
+
+mean() mean value
+
+sd() standard deviation
+
+median() median value
+
+n() number of observations (Note: this is a special function that does not take a vector argument and only works in the summarise function)
+
+<br/>
+
+*** Data summaries are useful when you need to calculate means and standard deviations and also show them in graphical format.
+
+<br/>
+
+```{r}
+
+# create data summary tables and calculate the mean and standard deviation of Height(cm) in each group: Male and female.
+
+#This is where piping operators are very useful.
+
+Elephants_data %>% 
+  group_by(Sex) %>% 
+  summarise(
+    meanHeight = mean(Height)
+  )
+
+```
+
+```{r}
+
+# Add other summary statistics (standard deviation, standard error) to the summarized data and assign it to an object called "sumElephant"
+
+sumElephant <- Elephants_data %>% 
+  group_by(Sex) %>% 
+  summarise(
+    meanHeight = mean(Height),
+    #sdHeight = sd(Height),
+    seHeight = sd(Height)/sqrt(n())
+    )
+# Be very careful with "n()", it counts the number of rows including missing data. If you have missing values in your data, using "n()" will give a wrong result. In other to calculate a standard error when you have missing data (which might likely have in your data), you need to use some additional arguments as seen below
+
+sumElephant2 <- Elephants_data %>% 
+  group_by(Sex) %>% 
+  summarise(
+    meanHeight = mean(Height, na.rm = T),
+    sdHeight = sd(Height, na.rm = T),
+    seHeight = sd(Height, na.rm = T)/sqrt(sum(!is.na(Height)))
+    )
+
+# Note that you can also group by more than one variable for example group_by(Age, Height).
+
+# Understanding how standard error function calculates the number of rows in a data with missing values 
+
+sum(!is.na(Elephants_data$Height)) #returns the sample size of non-NA to be used in calculation of the standard errors
+
+
+```
+
+<br/>
+We can now generate a graph displaying the mean ± the se.
+
+```{r}
+# constructing a graph that displays the mean with standard errors
+
+ggplot(sumElephant, aes(x=Sex, y=meanHeight, colour=Sex))+
+  geom_point(size=5)+
+  geom_errorbar(aes(ymin = meanHeight - seHeight,
+                    ymax = meanHeight + seHeight),
+                width = 0.2, linewidth = 1)+
+  ylab("Mean Height of humans (cm)")+
+  theme_bw() 
+
+
+# Note that you can modify error bars arguments with 1.96*seHeight to produce and display mean ± 95% Confidence interval
+
+```
+
+<br/>
+
+__Exercise B__
+
+<br/>
+
+Use ggplot() to make the figure below from the mortality data. Think about this carefully. 
+
+<br/>
+
+Hints:
+
+As you can see on the plot, the data used does not include Africa and Europe. Hence you will need to filter out African and Europe from the the "ParentLocation" variable.
+
+Also note that the period covers years after 2013, figure this out!
+
+The colours correspond to Period. Here, Use "as.factor()" function to convert the passed object(Period) into a Factor or a categorical variable. 
+We did not cover it, google it! Try using the "Period" without converting it to a factor and observe the difference. 
+
+
+```{r echo=FALSE, include=TRUE, warning=FALSE}
+
+
+Mortality_new <- Mortality %>% 
+  filter(., Period > 2013 & ParentLocation != "Africa" & ParentLocation != "Europe") 
+
+
+#Convert Period to a categorical variable using as.factor()
+Mortality_new$Period <- as.factor(Mortality_new$Period)
+
+
+Mortality_new %>% ggplot(., aes(x=ParentLocation, y=Adult_mortality_rate, colour=Period))+
+    geom_point()+
+  theme_bw()
+
+
+```
+
+
+Now, we need to summarise the data
+
+Hopefully you can see that with 3 Periods x 4 ParentLocations we have 12 groups. We can now calucate the 12
+means.
+
+Calculate the means and standard errors and make a nice table. 
+
+The aim is for you to figure out how to use two grouping variables. 
+
+```{r echo=FALSE, include=T}
+
+
+sumMortality = Mortality_new %>% 
+  group_by(ParentLocation, Period) %>% 
+  summarise(mean_Adult_Mortality = mean(Adult_mortality_rate),
+            se_Adult_Mortality = sd(Adult_mortality_rate)/sqrt(n())) 
+
+sumMortality
+
+```
+
+
+Now, visualize the summarized data.
+
+Make the following plot.
+
+Look closely and you will see that we have one grouping variable on the x-axis (ParentLocation) and another
+(Period) as colours. Think about how you do this with the aes() component of ggplot().
+
+The big challenge is to add lines connecting the dots! The data are grouped by Period. Check
+the ggplot help, internet and cheatsheet for the group argument and what it does. 
+
+Don’t forget to use ylab() to make that y-axis text.
+
+You might want to bookmark [Cookbook for R](http://www.cookbook-r.com). It’s a very handy resource for ggplot graph manipulations.
+
+Split the data into the three diet groups and plot each of them in their own
+panel - we do this with the facet_grid() layer. 
+
+Note that facet_grid() should come after the errorbars layer, but before the
+theme_bw(). 
+
+Get your x-axis tick labels rotated, add theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) after theme_bw()+ 
+
+
+```{r echo=FALSE, include=TRUE, warning=FALSE}
+
+sumMortality %>% 
+  ggplot(aes(x=ParentLocation, y=mean_Adult_Mortality, colour=Period,group=Period))+
+  geom_point(size = 3)+
+  geom_line(aes(group=as.factor(Period)))+
+  geom_errorbar(aes(ymin = mean_Adult_Mortality - se_Adult_Mortality, 
+                    ymax = mean_Adult_Mortality + se_Adult_Mortality), width=0.2)+
+  #scale_colour_manual(values = c("red","green","blue"), name = "Period")+
+  ylab("Mean Adult Mortality Rate")+
+  theme_bw()+
+  theme(axis.text.x = element_text(vjust = 1, hjust = 1, angle = 45))+
+  facet_grid(~as.factor(Period))
+  
+
+```
+
+<br/><br/>
+
+__If you’ve managed do successful do all of these, you have some great skills, congrats!__
+
+We have come to the end of the R course section 1. The date for the other section will be communicated to you in due course. Here are the [solutions](https://lizzydapsy.github.io/R-course_materials/Solutions.html) to all the exercises.
+
+We are now ready for the next section
+
+__Return__ to the [main course page](https://lizzydapsy.github.io/R-for-Data-Analysis/README.html) and click on "Basic statistics - t-test".
