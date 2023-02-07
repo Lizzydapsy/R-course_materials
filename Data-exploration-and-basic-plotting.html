@@ -2306,7 +2306,8 @@ values less than or equal to 0.1</p>
 ##  9  0.01   79   F    
 ## 10  0.04   91.5 M    
 ## 11  0.08   75.6 F</code></pre>
-<p>subset for Height values greater than 300 and the Age values less
+<p><br /></p>
+<p>Subset for Height values greater than 300 and the Age values less
 than or equal to 0.1</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use &quot;&amp;&quot; or &quot;,&quot;</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2320,7 +2321,7 @@ than or equal to 0.1</p>
 <p>As well as selecting columns or select rows in the data frame, both
 columns and rows can be selected by combining filter() with
 select().</p>
-<p>Here, we create a subset of Elephants_data containing Males of age 30
+<p>Here, we create a subset of Elephants_data containing males of age 30
 and above including their height data.</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>Elephants_data <span class="sc">%&gt;%</span> </span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(., Age <span class="sc">&gt;=</span> <span class="dv">25</span> <span class="sc">&amp;</span> Sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> ) <span class="sc">%&gt;%</span> <span class="co"># make sure to filter first. If you select first, you will not be able to filter on the other variables</span></span>
@@ -2357,7 +2358,7 @@ Elephants_200 data and name the file Elephants_200.csv.</p>
 <p><strong>(A)</strong></p>
 <p>Generate the output and the graph shown below.</p>
 <p><br /></p>
-<p>Tips:</p>
+<p>Hints:</p>
 <p>• select the Height and Age columns</p>
 <p>• filter Age that is &lt; 15</p>
 <p>• assign the data subset an object named EL_Age_15</p>
@@ -2408,8 +2409,8 @@ other two are not linearly separable from each other.</p>
 <p><br /></p>
 <p>Import these data and follow the instruction below to produce the
 following output.</p>
-<p>Don’t forget to start your script with ## for annotation libraries,
-data import, and checking the data.</p>
+<p>Don’t forget to start your script with “##” for annotating your codes
+for loading packages, data import, and checking the data.</p>
 <p>Make sure you have these annotated sections, and save this
 script!</p>
 <p><br /></p>
