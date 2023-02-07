@@ -150,7 +150,7 @@ ggplot(Mortality, aes(x=ParentLocation, y=Adult_mortality_rate))+
   geom_jitter(alpha=0.15, size=2, height = 0, width = 0.4)+ # shows the raw data (you can also use geom_point())
   theme_classic() 
 
-# Not that by default, built up layers inherits information from ggplot, unless otherwise stated.
+# Note that by default, built up layers inherit information from ggplot, unless otherwise stated.
   
 
 ```
@@ -208,7 +208,7 @@ ggplot(Elephants_data, aes(x=Age, y=Height, colour=Sex, shape = Sex))+
 
 <br/>
 
-You can choose specific colour palettes, such as those provided by the RColorBrewer package. This package provides palettes for different types of scale (sequential, diverging, qualitative).
+You can choose specific colour palettes, such as those provided by the RColorBrewer package. This package provides palettes for different types of scale.
 
 ```
 library(RColorBrewer)
@@ -226,7 +226,10 @@ ggplot(Elephants_data, aes(x=Age, y=Height, colour=Sex, shape = Sex))+
 
 __Exercise A__
 
-Make the boxplot of Mortality data to be coloured according to "ParentLocation" while making x to be ParentLocation and y, Adult_mortality_rate .
+```
+Make the boxplot of Mortality data to be coloured according to "ParentLocation" while making x to be ParentLocation and y, Adult_mortality_rate.
+
+```
 
 
 <br/>
@@ -241,13 +244,13 @@ To change the colour of the boxes we have to use fill.
 
 ```{r echo=FALSE, include=TRUE, warning=FALSE}
 
-ggplot(Mortality, aes(x=ParentLocation, y=Adult_mortality_rate, colour = ParentLocation))+
+ggplot(Mortality, aes(x=ParentLocation, y=Adult_mortality_rate, fill = ParentLocation))+
   geom_boxplot()+ # shows range of data
   geom_point(alpha=0.15, size=2)+ # shows the raw data (you can also use geom_point())
   theme_classic() 
 
 ```
-
+<br/>
 
 ### 4.   Summarising and grouping data with dplyr package in tidyverse
 <br/>
@@ -256,19 +259,19 @@ The summarise function can take any R function that takes a vector of values to 
 
 Some of the functions include:
 
-min() minimum value
+min(): minimum value
 
-max() maximum value
+max(): maximum value
 
-sum() sum of values
+sum(): sum of values
 
-mean() mean value
+mean(): mean value
 
-sd() standard deviation
+sd(): standard deviation
 
-median() median value
+median(): median value
 
-n() number of observations (Note: this is a special function that does not take a vector argument and only works in the summarise function)
+n(): number of observations (Note: this is a special function that does not take a vector argument and only works in the summarise function)
 
 <br/>
 
@@ -321,7 +324,7 @@ sum(!is.na(Elephants_data$Height)) #returns the sample size of non-NA to be used
 ```
 
 <br/>
-We can now generate a graph displaying the mean ± the se.
+We can now generate a graph displaying the mean ± se.
 
 ```{r}
 # constructing a graph that displays the mean with standard errors
@@ -355,7 +358,7 @@ As you can see on the plot, the data used does not include Africa and Europe. He
 
 Also note that the period covers years after 2013, figure this out!
 
-The colours correspond to Period. Here, Use "as.factor()" function to convert the passed object(Period) into a Factor or a categorical variable. 
+The colours correspond to Period. Here, use "as.factor()" function to convert the passed object(Period) into a Factor or a categorical variable. 
 We did not cover it, google it! Try using the "Period" without converting it to a factor and observe the difference. 
 
 
@@ -377,15 +380,14 @@ Mortality_new %>% ggplot(., aes(x=ParentLocation, y=Adult_mortality_rate, colour
 
 ```
 
+<br/>
 
 Now, we need to summarise the data
 
-Hopefully you can see that with 3 Periods x 4 ParentLocations we have 12 groups. We can now calucate the 12
+Hopefully you can see that with 3 Periods x 4 ParentLocations we have 12 groups. We can now calcucate the 12
 means.
 
-Calculate the means and standard errors and make a nice table. 
-
-The aim is for you to figure out how to use two grouping variables. 
+Calculate the means and standard errors and make the table below (The aim is for you to figure out how to use two grouping variables). 
 
 ```{r echo=FALSE, include=T}
 
@@ -399,15 +401,17 @@ sumMortality
 
 ```
 
+<br/>
 
-Now, visualize the summarized data.
+Now, you will neesd to visualize the summarized data by making the plot below.
 
-Make the following plot.
+
+Hints:
 
 Look closely and you will see that we have one grouping variable on the x-axis (ParentLocation) and another
 (Period) as colours. Think about how you do this with the aes() component of ggplot().
 
-The big challenge is to add lines connecting the dots! The data are grouped by Period. Check
+The big task here is to add lines connecting the dots! The data are grouped by Period. Check
 the ggplot help, internet and cheatsheet for the group argument and what it does. 
 
 Don’t forget to use ylab() to make that y-axis text.

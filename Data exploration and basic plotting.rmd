@@ -44,9 +44,7 @@ Move the two .csv files into the data folder in your project folder ("R-training
 
 ### 2. Importing data from the data folder into R
 
-Any .csv file can be imported into R using the function read_csv() and assigning it to a new variable to store the result.
-
-<br/>
+Any .csv file can be imported into R using the function read_csv() and assigning it to a new variable to store the data from the file.
 
 Prior to loading your data, make sure to load the required libraries for this section and set up you script with appropriate annotations
 
@@ -72,7 +70,7 @@ library("tidyverse") #tidyverse imports ggplot2 and dplyr
 
 ```
 
-
+<br/>
 
 A check can be performed with  the function file.exists() which will print TRUE if the file is present in the working directory.
 
@@ -96,6 +94,9 @@ Elephants_data <- read_csv("./data/ElephantsMF.csv")
 
 Look at the data using the function glimpse(), to be sure you have loaded the correct data
 
+A basic dataframe organizes data into a two-dimensional grid of rows and columns, much like a spreadsheet. In general, we will refer to the rows of the dataframe as observations, and the  columns as variables.
+
+
 ```{r}
 # Looking at the data
 
@@ -105,33 +106,31 @@ glimpse(Elephants_data)
 # or use "str(Elephants_data)"  to show the 'factors' and 'levels' info in output for characters. 
 # Some R version will require that you convert the character variable to factor as seen below, 
 # for str() to show "factors" info.
-# str(Elephants_data,stringsAsFactors=TRUE)
+
 # Elephants_data$Sex <- as.factor(Elephants_data$Sex)
 
 ```
 
 <br/>
 
-A basic dataframe organizes data into a two-dimensional grid of rows and colums, much like a spreadsheet. In general, we will refer to the rows of the dataframe as observations, and the  columns as variables.
-
-<br/>
 
 
 ```
 Question 1
-There are three variables in the Elephants_data, which of them are the explanatory variables and which is a response variable?
+
+There are three variables in the Elephants_data, which of them seem like the explanatory variables and which one is likely to be the response variable?
 
 ```
 
 <br/>
 
-### 3. Visualizing data
+### 3. Visualizing the data
 
 Visualize the data by generating your first plot in R using the function ggplot() from the package, ggplot2.
 
 ```{r}
 
-## Visualize the data1
+## Visualize data with scatterplot
 
 ggplot(Elephants_data, aes(x = Age, y=Height))+
   geom_point()    # a continuous response variable with a continuous explanatory variable producing scatterplot
@@ -139,7 +138,7 @@ ggplot(Elephants_data, aes(x = Age, y=Height))+
 ```
 
 ```
-Question 2.
+Question 2
 
 What is the relatioship between height and age? any interaction with age groups (below 20 and above 20)?
 
@@ -147,7 +146,7 @@ What is the relatioship between height and age? any interaction with age groups 
 
 ```{r}
 
-## Visualizing the data
+## Visualizing data with a barchart
 
 ggplot(Elephants_data, aes(x = Sex, y=Height))+
   geom_col()    # a continuous response variable with a binary explanatory variable producing barcharts
@@ -158,7 +157,7 @@ ggplot(Elephants_data, aes(x = Sex, y=Height))+
 
 ### 4. Customizing the plot
 
-We can put additional arguments in the aesthetics to customize plot. For example, to see that there are two groups in the data, we will add colour and shape to our the aesthetic.
+We can put additional arguments in the aesthetics to customize plot. For example, to see that there are two groups in the data, we will add colour and shape to our the aesthetics.
 
 ```{r}
 
@@ -180,13 +179,13 @@ We can use several functions in the package, dplyr to explore and manipulate the
 
 Please note that it is possible to use the functions in the The [R Base Package](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html) (This package contains the basic functions which makes R a language: arithmetic, input/output, basic programming support, etc. Its contents are available through inheritance from any environment.). However, it is generally easier to read, manipulate and write data using dplyr.
 
-We will be covering some of the functions available in the dplyr here. However, you can get an overview of most functions in dplyr [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+We will be covering some of the functions available in the dplyr here. You can get an overview of most functions in dplyr [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
 
 
 
 __Note:__ Mostly, observations are in the rows and variables are in the columns
 
-We can access the columns of a data frame using the select function.
+
 
 ***
 
@@ -196,9 +195,11 @@ __Subsetting Variables: Columns__
 
  The variables in our data are Age, Height and Sex as you can see in the environment pane or using the function glimpse().
  
+ We can access the columns of a data frame using the select function.
+ 
  "select()" from dplyr grabs specific columns and works only with variables
  
- We can select column by name, by adding bare column names (i.e. not requiring quote marks around the name) after the name of the data frame, separated by a , .
+ We can select column by name, by adding bare column names (i.e. not requiring quote marks around the name) after the name of the data frame, separated by a " , ".
  
  Make sure to type the name exactly as it appears in the data. If select sees a name that doesn’t exist in the data frame it will give an informative message Error.
  
@@ -214,6 +215,8 @@ select(Elephants_data, Age)
 
 ```
 
+<br/>
+
 Columns can also be omitted from the output by putting a minus (-) in front of the column name. 
 
 ```{r}
@@ -225,7 +228,9 @@ select(Elephants_data, -Age)
 
 ```
 
-We can select a range of variables by the : operator.
+<br/>
+
+We can select a range of variables by the ":" operator.
 
 ```{r}
 
@@ -235,6 +240,8 @@ We can select a range of variables by the : operator.
 select(Elephants_data, Height:Sex)
 
 ```
+
+<br/>
 
 Helper functions can be utilized to avoid writing the exact names of the column.
 ```{r}
@@ -253,6 +260,7 @@ select(Elephants_data, last_col())
 
 ```
 
+<br/>
 
 There is a different way to get columns with dplyr functions instead of nesting the verbs: Use piping operator " %>% ". Piping is a magical and fast way to do multiple things with dataframe.
 
@@ -260,15 +268,17 @@ Please, use the piping from now on!
 
 ```{r}
 
+#instead of "select(Elephants_data, Age)"
+
 Elephants_data %>% 
   select(., Age) 
 
-#instead of "select(Elephants_data, Age)"
-
 ```
 
+<br/>
 
 We can select more than one variables
+
 ```{r}
 # Selecting more than one variables
 
@@ -302,14 +312,15 @@ Elephant_Subset <- Elephants_data %>%
 __Subsetting Observations: Rows__
 
 ***
+We can access the rows of a data frame using the filter function.
 
 "filter()" from dplyr can be used to subset rows of the dataframes when we need to extract particular observations from the data. Don't forget about the [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
 
-The usage of filter(), involves using logical operations
+The usage of filter(), involves using __logical operations__
 
-x < y: is x less than y?
+x < y: is x less than y
 
-x > y: is x greater than y?
+x > y: is x greater than y
 
 x >= y: less than or equal to
 
@@ -319,7 +330,7 @@ x != y: not equal to
 
 
 
-We can use these logical operators to perform logical tests to filter the rows in a data frame. This logical test will be applied to each row and give either a TRUE or FALSE result. 
+We can use the logical operators to perform logical tests to filter the rows in a data frame. This logical test will be applied to each row and give either a TRUE or FALSE result. 
 When filtering, only rows with a TRUE result get returned.
 
 For example, we can filter for rows where the "Height" variable is less than 200.
@@ -334,8 +345,14 @@ Elephants_200 <- Elephants_data %>% filter(., Height < 200)
 
 ```
 
+<br/>
 
-__Something to try:__ Filter for rows where the "Age" variable is greater than and equal to 12.8
+__Try this__ 
+
+```
+Filter for rows where the "Age" variable is greater than and equal to 12.8
+```
+
 
 <br/>
 
@@ -355,7 +372,9 @@ Elephants_data %>% filter(., Height > 300 | Age <= 0.1)
 
 ```
 
-subset for Height values greater than 300 and the Age values less than or equal to 0.1 
+<br/>
+
+Subset for Height values greater than 300 and the Age values less than or equal to 0.1 
 
 ```{r}
 
@@ -375,7 +394,7 @@ __Subsetting Variables and observations__
 
 As well as selecting columns or select rows in the data frame, both columns and rows can be selected by combining filter() with select(). 
 
-Here, we create a subset of Elephants_data containing Males of age 30 and above including their height data.
+Here, we create a subset of Elephants_data containing males of age 30 and above including their height data.
 
 ```{r}
 
@@ -417,7 +436,7 @@ Generate the output and the graph shown below.
 
 <br/>
 
-Tips:
+Hints:
 
 • select the Height and Age columns
 
@@ -454,8 +473,7 @@ EL_Age_15 %>% ggplot(., aes( x=Age, y=Height))+
 
 __(B)__
 
-Produce the following data frame from Elephants_data using filter(); you need to identify the observations for where it is
-TRUE that the Sex is female
+Produce the following data frame from Elephants_data using filter(); you need to identify the observations for where it is TRUE that the Sex is female
 
 ```{r echo=FALSE, include=TRUE}
 
@@ -498,7 +516,7 @@ Species
 
 Import these data and follow the instruction below to produce the following output.
 
-Don’t forget to start your script with ## for annotation libraries, data import,
+Don’t forget to start your script with "##" for annotating your codes for loading packages, data import,
 and checking the data. 
 
 Make sure you have these annotated sections, and save this script!
