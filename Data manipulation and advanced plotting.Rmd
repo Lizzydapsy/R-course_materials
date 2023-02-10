@@ -31,9 +31,11 @@ In this section, we will introduce new graphic styles with histogram, boxplots a
 
 <br/>
 
-### 1. Download additional datasets
+### 1. Download data
 
-In this section, you will use the adult mortality rate dataset. Download the [Mortality.csv](http://rcg.group.shef.ac.uk/courses/R/Dataset/Mortality.csv) and move it into the data folder in your project folder ("R-training") on your local machine
+In this section, you will use the adult mortality rate dataset.
+
+Download the [Mortality.csv](http://rcg.group.shef.ac.uk/courses/R/Dataset/Mortality.csv) if you have not already done so, and move it into the data folder in your project folder ("R-training") on your local machine
 
 <br/>
 
