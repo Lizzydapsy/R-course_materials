@@ -1998,22 +1998,10 @@ contains counts of expensive and cheap cars in urban and rural
 environments. The primary question is: Does an association/interaction
 exist between the worth of cars and the environment where they are
 found?</p>
-<p><strong>Note:</strong> This test does not determine whether there are
-a greater or lesser number of expensive or cheap cars in each of these
-cites. As we would observe later, there are indeed more cars in urban
-cities compared to rural ones. However, this test is not assessing that
-aspect. Instead, it is examining a different question: Does an
-association exist? Specifically, are there variations in the number of
-one car category compared to the other between the two cities? In other
-words, this chi-square test is designed to investigate whether there is
-a significant correlation between the car’s worth distribution and their
-respective environments. It aims to answer whether one city tends to
-have more or fewer individuals of a particular car compared to the other
-city.</p>
 </div>
 <div id="visualize-the-data" class="section level3">
 <h3><strong>Visualize the data</strong></h3>
-<p>To further solidify our understanding, let us focus on our sample
+<p>To further solidify our understanding, let us visualize our sample
 dataset “cars.csv”.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the tidyverse library, including ggplot2 and dplyr</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
@@ -2080,9 +2068,49 @@ diving into statistical analysis. It is evident from the chart that
 there may be more black in the industrial category and more red in the
 rural category, indicating a potential association worth exploring
 further.</p>
+<p><strong>There are a few key takeaways:</strong></p>
+<p>Valid Use of Bar Plots: Bar plots are highly suitable for visualizing
+count data, especially when dealing with contingency table analysis.</p>
+<p>Customizing Colors with Fill or Scale Color Manual: The importance of
+utilizing “fill” or “scale_color_manual” becomes evident as it empowers
+you to tailor your graphs, ensuring that the right colors are associated
+with the correct levels or categories within your categorical
+variable.</p>
+<p>Position Argument in Geom Call: The clever use of the “position =
+dodge” argument within “geom_col()” allows you to position bars side by
+side instead of having them stacked on top of each other.</p>
 </div>
 <div id="perform-chi_square-test" class="section level3">
 <h3><strong>Perform chi_square test</strong></h3>
+<p>The chi-square test does not determine whether there are a greater or
+lesser number of expensive or cheap cars in each of these environments.
+As we observed in the visualizations, there are indeed more cars in
+urban cities compared to rural ones. However, this test is not assessing
+that aspect. Instead, it is examining a different question: Does an
+association exist? Specifically, are there variations in the number of
+one car category compared to the other between the two environments? In
+other words, this chi-square test is designed to investigate whether
+there is a significant correlation between the car’s worth and their
+respective environments. It aims to answer whether one environment tends
+to have more or fewer individuals of a particular car compared to the
+other environment</p>
+<p>We cannot perform the chi-square test directly with our current data
+format. The chi-square test requires a different data structure than the
+tidy format we have used for our visualizations. This test thrives on a
+specific data format, known as a matrix or contingency table, which
+gives rise to the name “chi-squared contingency table analysis.”</p>
+<p>To convert our existing data into this matrix format, we employ a
+function called “xtabs” which uses cross-tabulation to create a matrix
+from the dataset.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a contingency table using the &#39;xtabs()&#39; function</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>cars_mat <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> environment <span class="sc">+</span> worth, <span class="at">data =</span> cars)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>cars_mat</span></code></pre></div>
+<pre><code>##            worth
+## environment cheap expensive
+##       Rural     5         5
+##       Urban     5         5</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The contingency_table, &quot;cars_mat&quot; now contains the matrix format required for the chi-square test</span></span></code></pre></div>
 </div>
 <div id="interpreting-the-results" class="section level3">
 <h3><strong>Interpreting the results</strong></h3>
